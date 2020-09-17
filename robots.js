@@ -20,15 +20,11 @@ function robots_from_mars(input) {
     fall = false;
     for (j in instructions) {
       if (instructions[j] == 'F') {
-        if (orientation == 'N' && y + 1 <= max_Y) {
-          y++;
-        } else if (orientation == 'S' && y - 1 >= 0) {
-          y--;
-        } else if (orientation == 'E' && x + 1 <= max_X) {
-          x++;
-        } else if (orientation == 'W' && x - 1 >= 0) {
-          x--;
-        } else {
+        if (orientation == 'N' && y + 1 <= max_Y) y++;
+        else if (orientation == 'S' && y - 1 >= 0) y--;
+        else if (orientation == 'E' && x + 1 <= max_X) x++;
+        else if (orientation == 'W' && x - 1 >= 0) x--;
+        else {
           if (!scent) {
             fall = true;
             scent = true;
@@ -37,15 +33,10 @@ function robots_from_mars(input) {
         }
       }
       else {
-        if ((instructions[j] == 'R' && orientation == 'N') || (instructions[j] == 'L' && orientation == 'S')) {
-          orientation = 'E';
-        } else if ((instructions[j] == 'R' && orientation == 'S') || (instructions[j] == 'L' && orientation == 'N')) {
-            orientation = 'W';
-        } else if ((instructions[j] == 'R' && orientation == 'E') || (instructions[j] == 'L' && orientation == 'W')) {
-            orientation = 'S';
-        } else {
-          orientation = 'N';
-        }
+        if ((instructions[j] == 'R' && orientation == 'N') || (instructions[j] == 'L' && orientation == 'S')) orientation = 'E';
+        else if ((instructions[j] == 'R' && orientation == 'S') || (instructions[j] == 'L' && orientation == 'N')) orientation = 'W';
+        else if ((instructions[j] == 'R' && orientation == 'E') || (instructions[j] == 'L' && orientation == 'W')) orientation = 'S';
+        else orientation = 'N';
       }
     }
     if (fall) output += x + "" + y + orientation + "LOST\n";
