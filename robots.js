@@ -4,19 +4,19 @@ function robots_from_mars(input) {
   console.log(input);
   console.log("\n");
 
-  var output = "";
+  let output = "";
   const lines = input.split('\n');
 
   const coordinates = lines[0];
   const max_X = coordinates.length > 2 ? coordinates.length <= 3 ? coordinates.substr(0, 2) > 50 ? coordinates[0] : coordinates.substr(0, 2) : coordinates.substr(0, 2) : coordinates[0];
   const max_Y = coordinates.length > 2 ? coordinates.length <= 3 ? coordinates.substr(0, 2) > 50 ? coordinates.substr(1, 2) : coordinates[2] : coordinates.substr(2, 2) : coordinates[1];
 
-  var fall = false;
-  var scent = false;
-  for (var i = 1; i < lines.length - 1; i+=2) {
+  let fall = false;
+  let scent = false;
+  for (let i = 1; i < lines.length - 1; i+=2) {
     // processing each robot
-    var [x, y, orientation] = lines[i].split(' ');
-    var instructions = lines[i+1];
+    let [x, y, orientation] = lines[i].split(' ');
+    let instructions = lines[i+1];
     fall = false;
     for (j in instructions) {
       if (instructions[j] == 'F') {
